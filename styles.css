@@ -1,11 +1,3 @@
-.square {
-
-}
-
-.square:hover {
-    background-color: lightgrey;
-}
-
 .container {
     display: flex;
 }
