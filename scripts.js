@@ -1,19 +1,33 @@
-initialiseGrid(100);
+initialiseGrid(16);
 
-function initialiseGrid(quantity) {
-    const height = 800 / quantity;
-    const width = 800 / quantity;
+function initialiseGrid(size) {
+    const height = 800 / size;
+    const width = 800 / size;
     const outer = document.querySelector(".outer-container");
-    for (let i = 0; i < quantity; i++) {
+    for (let i = 0; i < size; i++) {
         const container = document.createElement("div");
         container.classList.add("container");
         outer.appendChild(container);
-        for (let j = 0; j < quantity; j++) {
+        for (let j = 0; j < size; j++) {
             const square = document.createElement("div");
             square.style.cssText = "height: " + height + "px; width: " + width + "px;";
             square.addEventListener("mouseover", paint);
             container.appendChild(square);
         }
+    }
+}
+
+function resize() {
+    let size = prompt("Please enter a number between 2 and 100.");
+    if (!isNaN(size) && size >= 2 && size <= 100) {
+        const outer = document.querySelector(".outer-container");
+        while (outer.firstChild) {
+            outer.removeChild(outer.firstChild);
+        }
+        initialiseGrid(Math.floor(size));
+    }
+    else if (size !== null) {
+        alert("Please enter a number between 2 and 100.");
     }
 }
 
